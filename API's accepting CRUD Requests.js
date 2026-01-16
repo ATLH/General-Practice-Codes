@@ -13,6 +13,11 @@ let server = http.createServer((req, res) => {
         res.writeHead(200, {'Content-Type': 'test/plain, charset=utf-8',})
         res.end(`Value = ${db_arr[num]}`);
     };
+
+    if (req.method === "POST"){
+        res.writeHead(200, {"Content-Type": "text/plain, charset=utf-8"});
+        res.end("Some Random Text");
+    }
 });
 
 server.listen(3000, () => console.log('Server Listening!'));
