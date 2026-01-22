@@ -1,11 +1,11 @@
-import http from "node:http"
+import { createserver } from "node:http"
 
 const db_arr = ['a', 'b', 'c', 'd'];
 console.log("Array before udpate: ", db_arr);
 
 const PORT = 3000;
 
-let server = http.createServer((req, res) => {
+let server = createServer((req, res) => {
     let url = new URL(req.url, `http://${req.headers.host}`);
     res.statusCode = 200;
     
@@ -52,7 +52,7 @@ let server = http.createServer((req, res) => {
             console.log('Error with message: ', err.name);
             console.log('Error Message: ', err.message);
             res.end('Request Failed!\nError Incurred');
-        })
+        });
     }
 
     else if (req.method === "DELETE" && url.pathname === '/delete') {
@@ -70,11 +70,11 @@ let server = http.createServer((req, res) => {
             console.log('Error with message: ', err.name);
             console.log('Error Message: ', err.message);
             res.end('Request Failed!\nError Incurred');
-        })
+        });
     }
 
     else {
-        res.end('Method not supported yet!\nTry using GET, POST, PUT, or DELETE methods');
+        res.end('Method not supported yet!\nTry using GET, POST, PUT, or DELETE method.');
     }
 });
 
