@@ -9,6 +9,10 @@ app.use(express.json());
 
 const db_uri = process.env.MONGODB_URI;
 
+app.use('/get/:userID', (req, res, next) => {
+    
+});
+
 (
     async () => {
         try {
@@ -36,5 +40,5 @@ const creator = await User.create({
     name:'Talha'
 });
 
-const users_list = await User.find();
+const users_list = await User.findOne({ id: 12345});
 console.log(users_list);
